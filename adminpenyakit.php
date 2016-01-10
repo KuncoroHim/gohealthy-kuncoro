@@ -9,7 +9,7 @@ if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmi
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="author" content="kuncoro">
   <link rel="icon" href="favicon.ico">
-  <title>Adminpenjualan | Dashboard</title>
+  <title>Adminpenyakit | Dashboard</title>
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
@@ -76,13 +76,13 @@ if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmi
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="adminpenyakit.php"><i class="fa fa-circle-o"></i> Penyakit</a></li>
+            <li class=" active treeview"><a href="adminpenyakit.php"><i class="fa fa-circle-o"></i> Penyakit</a></li>
             <li><a href="adminobat.php"><i class="fa fa-circle-o"></i> Obat</a></li>
           </ul>
         </li>
         </li>
-        <li class="active treeview">
-          <a href="adminpenjualan.php">
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-table"></i> <span>Penjualan</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -104,7 +104,7 @@ if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmi
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        PENJUALAN
+        PENYAKIT
         <small>Daftar</small>
       </h1>
     </section>
@@ -117,7 +117,7 @@ if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmi
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
          <div class="col-xs-12">
-              <?php include "tampilpenjualan.php";?>
+              <?php include "updatepenyakit.php";?>
         </div>
       </section>
      </div>

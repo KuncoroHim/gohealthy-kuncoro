@@ -1,3 +1,6 @@
+<?php
+if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmin'){
+?>
 <html>
 <head>
 	<title>Update penyakit</title>
@@ -30,9 +33,10 @@
 				type : 'post',
 				data : 'namapenyakit='+namapenyakit+'&infopenyakit='+infopenyakit+'&pilihpenyakit='+pilihpenyakit,
 				success : function(msg){
-					if(msg != 'sukses'){
+					if(msg == 'sukses'){
 						$("#tampildata").load("tampilpenyakit.php");
-							$("#form").hide();
+					} else if(msg == 'sudah'){
+						alert("nama penyakit = "+namapenyakit+" sudah tersedia");
 					} else {
 						alert("Gagal menambahkan");
 					}
@@ -42,11 +46,11 @@
 	});
 
 	$("#tampildata").on("click",".edit",function(){
-		var id = $(this).attr("id");
+		var idpenyakit = $(this).attr("id");
 		$.ajax({
 			url : 'formeditupdatepenyakit.php',
 			type : 'post',
-			data : 'id='+id,
+			data : 'idpenyakit='+idpenyakit,
 			success : function(msg) {
 				$("#form").hide().fadeIn(1000).html(msg);
 			}
@@ -99,3 +103,8 @@
 	});
 </script>
 </html>
+<?php
+} else {
+    header("location:loginadmin.php");
+}
+?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2016 at 06:58 AM
+-- Generation Time: Jan 07, 2016 at 03:21 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -30,14 +30,14 @@ CREATE TABLE IF NOT EXISTS `tabel_admin` (
   `id_admin` int(11) NOT NULL,
   `nama_admin` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_admin`
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama_admin`, `password`) VALUES
-(2, 'teguh', 'teguh');
+(1, 'teguhpri', 'jukol');
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,15 @@ CREATE TABLE IF NOT EXISTS `tabel_jual` (
 --
 
 INSERT INTO `tabel_jual` (`nama_konsumen`, `total_di_bayar`, `bayar`, `kembali`) VALUES
-('teguh', 20000, 23000, 3000);
+('deodeded', 0, 40000, 7000),
+('fjfjif', 0, 20000, 5000),
+('jkk b', 0, 900000, 633000),
+('l;mkn', 0, 20000, 2000),
+('mook', 0, 300, 0),
+('muncen', 0, 20000, 0),
+('sedede', 0, 444, 0),
+('wanyad', 0, 20000, 5000),
+('wokl', 0, 300, 0);
 
 -- --------------------------------------------------------
 
@@ -74,14 +82,40 @@ CREATE TABLE IF NOT EXISTS `tabel_jual_data` (
   `jumlah_beli` int(11) NOT NULL,
   `harga_akhir` int(11) NOT NULL,
   `no` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_jual_data`
 --
 
 INSERT INTO `tabel_jual_data` (`nama_konsumen`, `nama_obat`, `jenis_obat`, `pilih_obat`, `harga_obat_satuan`, `jumlah_beli`, `harga_akhir`, `no`) VALUES
-('teguhmember', 'Beras Kencur', 'Cair', 'badan', 3000, 1, 3000, 113);
+('huhu', 'Bodrexin', 'Tablet', 'kepala', 3000, 2, 6000, 85),
+('huhu', 'Tramadol', 'Tablet', 'kepala', 10000, 2, 20000, 86),
+('jungkir', 'Beras Kencur', 'Cair', 'badan', 3000, 20, 60000, 87),
+('gogok', 'Beras Kencur', 'Cair', 'badan', 3000, 5, 15000, 88),
+('gogok', 'Kuku bima', 'Sashet', 'badan', 2000, 4, 8000, 89),
+('rrrreesdd', 'Bodrexin', 'Tablet', 'kepala', 3000, 5, 15000, 90),
+('kokog', 'Beras Kencur', 'Cair', 'badan', 3000, 5, 15000, 91),
+('klnkn', 'Beras Kencur', 'Cair', 'badan', 3000, 70, 210000, 92),
+('jkk b', 'Beras Kencur', 'Cair', 'badan', 3000, 89, 267000, 93),
+('deodeded', 'Beras Kencur', 'Cair', 'badan', 3000, 11, 33000, 94),
+('fjfjif', 'Beras Kencur', 'Cair', 'badan', 3000, 5, 15000, 95),
+('knknknk', 'Bodrexin', 'Tablet', 'kepala', 3000, 5, 15000, 96),
+('kolpk', 'Beras Kencur', 'Cair', 'badan', 3000, 7, 21000, 97),
+('kninini', 'Beras Kencur', 'Cair', 'badan', 3000, 7, 21000, 98),
+('nnjnjnj', 'Beras Kencur', 'Cair', 'badan', 3000, 6, 18000, 99),
+('knnkn', 'Beras Kencur', 'Cair', 'badan', 3000, 6, 18000, 100),
+('lll,l,', 'Beras Kencur', 'Cair', 'badan', 3000, 2, 6000, 101),
+('l;mkn', 'Beras Kencur', 'Cair', 'badan', 3000, 6, 18000, 102),
+('lldmmdl', 'Beras Kencur', 'Cair', 'badan', 3000, 20, 60000, 103),
+('lldmmdl', 'Bodrexin', 'Tablet', 'kepala', 3000, 2, 6000, 104),
+('wanyad', 'Beras Kencur', 'Cair', 'badan', 3000, 2, 6000, 105),
+('wanyad', 'Beras Kencur', 'Cair', 'badan', 3000, 3, 9000, 106),
+('muncen', 'Extra joss', 'Cair', 'badan', 1200, 10, 12000, 107),
+('muncen', 'Tramadol', 'Tablet', 'kepala', 10000, 10, 100000, 108),
+('mook', 'Beras Kencur', 'Cair', 'badan', 3000, 2, 6000, 109),
+('wokl', 'Beras Kencur', 'Cair', 'badan', 3000, 3, 9000, 110),
+('sedede', 'Beras Kencur', 'Cair', 'badan', 3000, 3, 9000, 111);
 
 -- --------------------------------------------------------
 
@@ -97,14 +131,22 @@ CREATE TABLE IF NOT EXISTS `tabel_member` (
   `no_telp` int(12) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_rekening` int(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_member`
 --
 
 INSERT INTO `tabel_member` (`id_member`, `email`, `password`, `username`, `no_telp`, `alamat`, `no_rekening`) VALUES
-(18, 'teguh@gmail.com', 'teguhmember', 'teguhmember', 857428509, 'fwfwfwo', 43332222);
+(5, 'kontol', 'titit', 'silit', 0, '', 0),
+(6, 'gggg', 'jjj', 'hhh', 8888, '', 0),
+(7, 'ggggss', 'jjjsss', 'hhhkos', 888866, '', 0),
+(9, 'holaholos@gmail.com', 'juntakddd', 'DONOdddd', 89500533, '', 0),
+(11, 'doooo@gmail.com', 'jijik', 'dhon', 383847, '', 0),
+(12, 'kuncoro@fmail.com', 'kuncorohim', 'kuncoro', 0, '', 0),
+(14, 'cara1@gmail.co.id', 'caracara', 'cara', 2147483647, '', 0),
+(15, 'dododo@gmail.com', 'juned', 'teguh', 983928, 'wjswjdbwjbdjwd', 2147483647),
+(16, 'niwe', 'ncnw', 'ww', 222222232, 'wnfiw', 2323);
 
 -- --------------------------------------------------------
 
@@ -131,7 +173,7 @@ INSERT INTO `tabel_obat` (`stok_obat`, `harga_obat`, `id_obat`, `nama_obat`, `je
 (482, 2000, 34, 'Kuku bima', 'Sashet', 'badan'),
 (278, 3000, 35, 'Bodrexin', 'Tablet', 'kepala'),
 (488, 2000, 36, 'Oskadon', 'Tablet', 'kepala'),
-(60, 3000, 37, 'Beras Kencur', 'Cair', 'badan');
+(128, 3000, 37, 'Beras Kencur', 'Cair', 'badan');
 
 -- --------------------------------------------------------
 
@@ -144,14 +186,18 @@ CREATE TABLE IF NOT EXISTS `tabel_penyakit` (
   `nama_penyakit` varchar(50) NOT NULL,
   `info_penyakit` varchar(500) NOT NULL,
   `pilih_penyakit` enum('badan','kepala') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_penyakit`
 --
 
 INSERT INTO `tabel_penyakit` (`id_penyakit`, `nama_penyakit`, `info_penyakit`, `pilih_penyakit`) VALUES
-(12, 'Migrain', 'Sakit Kepala Sebelah Yang Mengganggu Segalanya', 'kepala');
+(3, 'kkkk', 'lujyjddd', 'kepala'),
+(4, 'mmmm', 'jhhh', 'kepala'),
+(9, 'titit', 'kopok', 'kepala'),
+(10, 'lop', 'ss', 'badan'),
+(11, 'gundul', 'wodjdwbfewufb', 'badan');
 
 --
 -- Indexes for dumped tables
@@ -201,17 +247,17 @@ ALTER TABLE `tabel_penyakit`
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tabel_jual_data`
 --
 ALTER TABLE `tabel_jual_data`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=114;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
 --
 -- AUTO_INCREMENT for table `tabel_member`
 --
 ALTER TABLE `tabel_member`
-  MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tabel_obat`
 --
@@ -221,7 +267,7 @@ ALTER TABLE `tabel_obat`
 -- AUTO_INCREMENT for table `tabel_penyakit`
 --
 ALTER TABLE `tabel_penyakit`
-  MODIFY `id_penyakit` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_penyakit` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -44,99 +44,41 @@
 		.pull-right {
 		     float: right;
   		}
-  		#reg{
-      text-align: center;
-      margin: 0 auto;
-      background-color: none;
-      width: 300px; 
-      padding: 10px;
-      font-family: helvetica;
-      border-radius: 3px;
-    }
-  		.form-group{
-      margin-top: 15px;
-      margin-bottom: 10px;
-      text-align: left;
-      padding: 0 0 0 45px;
-    }
 	</style>
 	
 </head>
 <body>
-	<div id="reg">
-		<form action="loginmember.php" method="post">
-    		<button type="submit" name="submit">Back</button>
-  		</form>
+	
+	<div class="container">
+		<form action="register.php" method="POST">
 		<div>
-			<p align="center" style="font-size:160%; color:blue;"><br >Silahkan Isi Data Diri Anda</br></p>
+			<label>Username : </label>
+			<input type="text" placeholder="Username" name="username">
 		</div>
-		<div class="form-group">
-			<table>
-				<tr>
-					<td><label>Username</label></td>
-					<td>:</td>
-					<td><input type="text" placeholder="Username" id="username"></td>
-				</tr>
-				<tr>
-					<td><label>Password</label></td>
-					<td>:</td>
-					<td><input type="password" placeholder="Password" id="password"></td>
-				</tr>
-				<tr>	
-					<td><label>Email</label></td>
-					<td>:</td>
-					<td><input type="text" placeholder="Email" id="email"></td>
-				</tr>
-				<tr>
-					<td><label>No_Telp/HP</label></td>
-					<td>:</td>
-					<td><input type="text" placeholder="No Telepon/HP" id="no_telp"></td>
-				</tr>
-				<tr>
-					<td><label>Alamat</label></td>
-					<td>:</td>
-					<td><textarea type="text" placeholder="Alamat" id="alamat"></textarea></td>
-				</tr>	
-				<tr>
-					<td><label>No_rekening</label></td>
-					<td>:</td>
-					<td><input type="text" placeholder="No rekening" id="no_rek"></td>
-				</tr>
-			</table>
-			<div id="buton">
-				<button id="joss">Register</button>
-			</div>
+		<div>
+			<label>Password : </label>
+			<input type="password" placeholder="Password" name="password">
 		</div>
+		<div>
+			<label>Email : </label>
+			<input type="text" placeholder="Email" name="email">
+		</div>
+		<div>
+			<label>No_Telp/Hp : </label>
+			<input type="text" placeholder="No Telepon/HP" name="no_telp">
+		</div>
+		<div>
+			<label>Alamat/Hp : </label>
+			<textarea type="text" placeholder="Alamat" name="alamat"></textarea>
+		</div>
+		<div>
+			<label>No_rekening : </label>
+			<input type="text" placeholder="No rekening" name="norek">
+		</div>
+			<input type="submit" name="enter" value="OK">
+		</div>
+	</form>
+	</div>
+	
 </body>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript">
-	$("#buton").on("click","#joss",function(){
-		var username = $("#username").val();
-		var password = $("#password").val();
-		var email = $("#email").val();
-		var no_telp = $("#no_telp").val();
-		var alamat = $("#alamat").val();
-		var no_rek = $("#no_rek").val();
-		
-		if(username == "" || password == "" || email == "" || no_telp == "" || alamat == "" || no_rek == "" ){
-			alert("Isi dengan lengkap..!! "+username+""+password+""+email+""+no_rek+""+alamat+""+no_telp );
-		} else if(!$.isNumeric(no_rek) && !$.isNumeric(no_telp)){
-			alert("isi no_telp = "+no_rek+" dan no_rekening = "+no_telp+" dengan Benar !!!");
-		} else if(!$.isNumeric(no_telp)){
-			alert("isi no_telp = "+no_telp+" dengan Benar !!!");
-		} else if(!$.isNumeric(no_rek)){
-			alert("isi no_telp = "+no_rek+" dengan Benar !!!");
-		} else {
-			$.ajax({
-				url : 'register.php?page=save',
-				type : 'post',
-				data : 'username='+username+'&password='+password+'&email='+email+'&no_telp='+no_telp+'&alamat='+alamat+'&no_rek='+no_rek,
-				success : function(msg){
-					alert("Silahkan anda login dengan username = "+username+" dan password yang sudah di inputkan..!!");
-					window.location.href='loginmember.php';
-				}
-			});
-		}
-	});
-</script>
 </html>

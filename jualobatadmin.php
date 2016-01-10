@@ -1,34 +1,32 @@
+
 <?php
-if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginmember'){
+if(isset($_COOKIE['userloginadmin']) && $_COOKIE['userloginadmin'] == 'loginadmin'){
 ?>
+<!doctype html>
 <html>
 <head>
 	<title>Jual Obat</title>
 </head>
 <link rel="stylesheet" type="text/css" href="jualobat.css">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<body style="background-image:url(img/Health.jpg)">
-	<div class="container">
-		<div class="page-header">
-		<div id="hasilbelumdisable">
+<body>
+	<div id="hasilbelumdisable">
 	<table>
 			<tr>
 				<td>Nama Konsumen</td>
 				<td>:</td>
-				<td><input value="<?php $_COOKIE['namamember']; ?>" id="namakonsumen" disabled></td>
+				<td><input id="namakonsumen">
+				</td>
 			</tr>
 	</table>
 </div>
-	</div>
-	
 	
 	<div id="tabelobat">	
-		<?php include "tampiljualobat.php"; ?>
+		<?php include "tampiljualobatadmin.php"; ?>
 	</div>
-	<div id="awalaninformasiobat" >
-		<fieldset >
+	<div id="awalaninformasiobat">
+		<fieldset>
 			<legend>Informasi Obat</legend>
-		<table >
+		<table>
 			<tr>
 				<td>Nama Obat</td>
 				<td>:</td>
@@ -57,7 +55,7 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 			<tr>
 					<td>Jumlah Beli Obat Di Pilih</td>
 					<td>:</td>
-					<td><input></td>
+					<td><input value="0"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -69,10 +67,9 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 		</table>
 	</fieldset>
 	</div>
-	<div class="container">
-		<div id="hasilform"></div>
+	<div id="hasilform"></div>
 	<div id="awalcoy">
-		<table border="2px">
+		<table border="1">
 			<tr>
 				<td>No</td>
 				<td>Nama Obat</td>
@@ -88,10 +85,6 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 	<div id="transaksi">
 		<?php include "formtransaksi.php"; ?>
 	</div>
-	</div>
-	</div>
-	
-	
 </body>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
@@ -147,12 +140,7 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 		var stokobat = $("#stokobat").val();
 		var sisastok = stokobat-jumlahbeli;
 
-		var totaldibayari = $("#totaldibayar").val();
-		var result = parseInt(hargaakhir)+parseInt(totaldibayari);
-
-		document.getElementById('totaldibayar').value = result;
-
-		if(jumlahbeli == ''){
+		if(jumlahbeli == 0){
 			alert("Inputkan jumlah beli");
 		} else if (sisastok < 0) {
 			alert("Stok tidak mencukupi");
@@ -165,6 +153,9 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 				data : 'sisastok='+sisastok+'&namaobat='+namaobat+'&jenisobat='+jenisobat+'&namakonsumen='+namakonsumen+'&jumlahbeli='+jumlahbeli+'&hargaobatsatuan='+hargaobatsatuan+'&pilihobat='+pilihobat+'&hargaakhir='+hargaakhir,
 				success : function(msg){
 					if(msg == 'sukses'){
+						var totaldibayar = $("#totaldibayar").val();
+						var result = parseInt(hargaakhir)+parseInt(totaldibayar);
+						document.getElementById('totaldibayar').value = result;
 						alert("sukses");
 					} else if (msg == 'sudah'){
 						alert("obat yang di beli sudah ada");
@@ -176,33 +167,44 @@ if(isset($_COOKIE['userloginmember']) && $_COOKIE['userloginmember'] == 'loginme
 		}
 	});
 
-	$("#transaksi").on("click","#simpan",function(){
+	$("#transaksi").on("click","#bayaar",function(){
 		var namakonsumensimpan = $("#namakonsumen").val();
-		var totaldibayari = $("#totaldibayar").val();
-		var bayartotal = $("#dibayar").val();
-		var kembali = $("#kembali").val();
+		var totaldibayarin = $("#totaldibayar").val();
+		var dibayar = $("#dibayar").val();
+		var resd = parseInt(dibayar) - parseInt(totaldibayar);
 
-		if(bayartotal == 0){
+
+		if(dibayar == 0){
 			alert("Bayar dulu dong !!!");
+		} else if(resd < 0){
+			alert("Duitmu kurang");
 		} else {
 			$.ajax({
-				url : 'prosesjualobat.php?page=simpan',
+				url : 'prosesjualobat.php?page=simpanjual',
 				type : 'post',
-				data : 'namakonsumensimpan='+namakonsumensimpan+'&totaldibayari='+totaldibayari+'&bayartotal='+bayartotal+'&kembali='+kembali,
+				data : 'namakonsumensimpan='+namakonsumensimpan+'&totaldibayarin='+totaldibayarin+'&dibayar='+dibayar+'&resd='+resd,
 				success : function(msg){
 					if(msg == 'sukses'){
-						alert("eben maring menu utama");
+						alert("sukses");
+						document.getElementById('kembali').disabled = true;
+						document.getElementById('simpan').disabled = true;
+						document.getElementById('selesai').disabled = false;
+						document.getElementById('totaldibayar').disabled = true;
+						document.getElementById('jumlahbeli').disabled = true;
+						document.getElementById('kembali').value = resd;				
 					} else {
-						alert("Gagagal");
+						alert("Gagal");
 					}
 				}
 			});
 		}
 	});
+
+	
 </script>
 </html>
 <?php
 } else {
-    header("location:loginmember.php");
+    header("location:loginadmin.php");
 }
 ?>
